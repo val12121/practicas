@@ -1,9 +1,25 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingenier´ıa y Tecnolog´ıa
+// Grado en Ingenier´ıa Inform´atica
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Pr´actica 2: Cadenas y lenguajes
+// Autor: Camila Valentina Alonso Yepez
+// Correo: alu0101548999@ull.edu.es
+// Fecha: 16/09/2025
+// Archivo cya-P02-strings.cc: main.cc.
+// Se declara la Clase Chain y sus funciones 
+// Referencias:
+// Enlaces de inter´es
+// Historial de revisiones
+// 22/09/2026 - Creaci´on (primera versi´on) del c´odigo
+
 #ifndef CHAIN_H_
 #define CHAIN_H_
 
-#include <iostream>
-#include <string>
 #include <vector>
+#include <string>
+#include <iostream>
 #include "alphabet.h"
 
 class Chain {
@@ -13,62 +29,29 @@ class Chain {
       : chain_(chain), alphabet_(alphabet) {}
 
   int Longitud() const {
-    return static_cast<int>(chain_.size());
-  }
-  void Potencia(int iter) const {
-    for (int i = 0; i < iter; i++) {
-      std::cout << chain_;
-    }
-    std::cout << std::endl;
+    return chain_.size();
   }
 
-  void Inversa() const {
-    for (const auto& element: chain_) {
-      std::cout << element;
+  Chain Potencia(int n) const {
+    Chain new_chain; 
+    for (int i = 0; i < n; i++) {
+      new_chain.Insert(chain_);
     }
-    std::cout << " -> ";
-    std::vector<char> inverso (chain_.begin(), chain_.end());
-    for (int i = inverso.size() - 1; i >= 0 ; i--) {
-      std::cout << inverso[i];
-    }
-    std::cout << std::endl;
+    new_chain.alphabet_.set_alfabeto(this->alphabet_.get_alphabet());
+    return new_chain;
   }
 
-  std::vector<std::string> Prefixes() const {
-    std::vector<std::string> prefixes;
-    prefixes.push_back("&");
-    for (size_t i = 0; i < chain_.size(); ++i) {
-      prefixes.push_back(chain_.substr(0, i + 1));
-    }
-    for (int i = 0; i < prefixes.size(); i++) {
-      std::cout << prefixes[i] << " ";
-    }
-    std::cout << std::endl;
-    return prefixes;
-    
+  void Insert (std::string chain) {
+    chain_ += chain; 
   }
 
-  std::vector<std::string> Suffixes() const {
-    std::vector<std::string> suffixes;
-    suffixes.push_back("&");
-    for (int i = static_cast<int>(chain_.size()) - 1; i >= 0; --i) {
-      suffixes.push_back(chain_.substr(i));
-    }
-    for (int i = 0; i < suffixes.size(); i++) {
-      std::cout << suffixes[i] << " ";
-    }
-    std::cout << std::endl;
-    return suffixes;
-  }
+  void Inversa() const;
 
-  bool Verification() const {
-    for (char symbol : chain_) {
-      if (!alphabet_.found(symbol)) {
-        return false;
-      }
-    }
-    return true;
-  }
+  std::vector<std::string> Prefixes() const ;
+
+  std::vector<std::string> Suffixes() const ;
+
+  bool Verification() const ;
 
   friend std::ostream& operator<<(std::ostream& os, const Chain& chain) {
     for (const auto& element : chain.chain_) {

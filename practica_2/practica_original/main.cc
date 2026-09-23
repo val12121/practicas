@@ -20,13 +20,13 @@
 #include <fstream>
 #include "chain.h"
 
-void PrintUsage(const std::string& program_name) {
-  std::cout << "Uso: " << program_name << " filein.txt fileout.txt opcode\n";
-  std::cout << "Pruebe '" << program_name << " --help' para mas informacion.\n";
+void PrintUsage() {
+  std::cout << "Uso: filein.txt fileout.txt opcode\n";
+  std::cout << "Pruebe --help' para mas informacion.\n";
 }
 
 void PrintHelp() {
-  std::cout << "Modo de empleo: ./cya-P02-strings filein.txt fileout.txt opcode\n\n";
+  std::cout << "Modo de empleo: ./main filein.txt fileout.txt opcode\n\n";
   std::cout << "Opciones de opcode:\n";
   std::cout << "  1: Alfabeto asociado a la cadena\n";
   std::cout << "  2: Longitud de la cadena\n";
@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
   }
 
   if (argc != 4 && argv[3][0] != '7') {
-    PrintUsage(argv[0]);
+    PrintUsage();
     return 1;
   }
 
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
       break;
     case '7':
       std::cout << "Has elegido la opcion 7: Potencia\n";
-      current_chain.Potencia((int)(argv[4][0] - '0'));
+      std::cout << current_chain.Potencia((int)(argv[4][0] - '0')) << std::endl;
       break;
     default:
       break;
