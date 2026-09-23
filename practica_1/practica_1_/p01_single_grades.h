@@ -1,3 +1,18 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingenier´ıa y Tecnolog´ıa
+// Grado en Ingenier´ıa Inform´atica
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Pr´actica 1: Contenedores asociativos
+// Autor: Camila Valentina Alonso Yepez
+// Correo: alu0101548999@ull.edu.es
+// Fecha: 15/09/2026
+// Archivo main.cc: programa principal desde el que se crearan los objetos.
+// Contiene la funci'on main del proyecto 
+// Referencias:
+// Enlaces de inter´es
+// Historial de revisiones
+
 #include <map>
 #include <iostream>
 

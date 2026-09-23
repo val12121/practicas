@@ -41,6 +41,10 @@ int main (int argc, char* argv[]) {
     students.Add(alu, grade);
   }
 
-  std::cout << students;
+  if (!argv[2]) {
+    std::cout << students;
+  } else {
+    students.Show();
+  }
 
 }
