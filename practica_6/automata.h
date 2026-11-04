@@ -28,6 +28,7 @@ public:
     alfabeto_.set_alfabeto(content[0]);
     std::cout << "\nAlfabeto: " << alfabeto_ << std::endl;
     int n_estados = std::stoi(content[1]);
+    estado_inicial_ = std::stoi(content[2]);
 
     for (int i = 0; i < n_estados; i++) {
       std::stringstream ss(content[3 + i]);
@@ -50,36 +51,20 @@ public:
       return;
     }
     std::getline(file2, cadena_);
-    std::cout << cadena_ << std::endl; 
+    //std::cout << cadena_ << std::endl; 
   }
 
-  void MostrarEstados() {
-    for (const auto& estado : estados_) {
-      std::cout << "Estado: " << estado.first << " ";
-      std::cout << "Aceptado: " << estado.second << std::endl;
-    }
-  }
+  void MostrarEstados();
+  void MostrarPosiblesCaminos();
 
-  void MostrarPosiblesCaminos() {
-    for (const auto& estado : transiciones_) {
-      std::cout << "Estado: " << estado.first << std::endl;
-      for (const auto& transicion : estado.second) {
-        std::cout << transicion.first
-                  << " -> "
-                  << transicion.second
-                  << std::endl;
-      }
-    }
-  }
-
-  bool SimuladorCadena (string cadena) {
-    return 0; 
-  }
+  void SimuladorCadena ();
+  void SimuladorCadena (std::string salida);
 
 private:
   std::map<int, Estado> estados_;
   std::map<int, std::map<char, int>> transiciones_;
   std::vector<std::string> content;
+  int estado_inicial_; 
   std::string cadena_;
   Alfabeto alfabeto_;
 };
