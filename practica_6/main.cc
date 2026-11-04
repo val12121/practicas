@@ -14,10 +14,11 @@ int main(int argc, char* argv[]) {
     Help();
     return 1;
   } 
-  std::string archivo = argv[1];
-  Automata autos(archivo);
+  std::string archivo_dfa = argv[1];
+  std::string archivo_salida = argv[3];
+  Automata autos(archivo_dfa);
   autos.MostrarEstados();
   std::cout << "\nPosibles transiciones: \n";
   autos.MostrarPosiblesCaminos();
-  autos.SimuladorCadena(std::string(argv[3]));
+  autos.SimuladorCadena(archivo_salida);
 }
