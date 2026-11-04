@@ -1,0 +1,16 @@
+
+ Simulando el paso por DFA: 
+
+- Estado actual   - Entrada   - Nuevo Estado
+0                 a            1
+1                 b            3
+3                 a            1
+1                 b            3
+3                 b            4
+4                 b            2
+2                 b            2
+2                 a            1
+1                 b            3
+3                 a            1
+
+CADENA RECHAZADA

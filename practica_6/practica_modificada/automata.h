@@ -5,6 +5,7 @@
 #include <string>
 #include <set>
 #include <map>
+#include <cmath>
 #include "estado.h"
 #include "alfabeto.h"
 
@@ -59,11 +60,39 @@ public:
 
   void SimuladorCadena ();
   void SimuladorCadena (std::string salida);
-
+  //Modificación
+  void GeneradorDeCadenas(int n = 3) {
+    for (int j = 0; j <= n; j++) {
+      int total_combinaciones = pow(2, j);
+      for (int i = 0; i < total_combinaciones; i++) {
+          std::string combinacion_actual = "";
+          for (int z = j - 1; z >= 0; z--) {
+              int bit = (i >> z) & 1;
+              if (bit == 0) {
+                  combinacion_actual += 'a';
+              } else {
+                  combinacion_actual += 'b';
+              }
+          }
+          cadenas_.push_back(combinacion_actual);
+      }
+    }
+    for (int i = 0; i < cadenas_.size(); i++) {
+      std::cout << cadenas_[i] << std::endl;
+    }
+  }
+  void SimuladorMultiple() {
+    for (int i = 0; i < cadenas_.size(); i++) {
+      cadena_ = cadenas_[i];
+      std::cout << "La cadena a simular es: " << cadena_ << std::endl; 
+      SimuladorCadena();
+    }
+  }
 private:
   std::map<int, Estado> estados_;
   std::map<int, std::map<char, int>> transiciones_;
   std::vector<std::string> content;
+  std::vector<std::string> cadenas_;  
   int estado_inicial_; 
   std::string cadena_;
   Alfabeto alfabeto_;

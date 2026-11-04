@@ -15,10 +15,11 @@ int main(int argc, char* argv[]) {
     return 1;
   } 
   std::string archivo_dfa = argv[1];
-  std::string archivo_salida = argv[3];
   Automata autos(archivo_dfa);
   autos.MostrarEstados();
   std::cout << "\nPosibles transiciones: \n";
   autos.MostrarPosiblesCaminos();
-  autos.SimuladorCadena(archivo_salida);
+  //Modificación
+  autos.GeneradorDeCadenas(std::stoi(argv[3]));
+  autos.SimuladorMultiple();
 }
